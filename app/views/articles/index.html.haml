@@ -1,0 +1,31 @@
+- provide :title, 'О зрительном контакте'
+
+.articles
+  .content
+    - @articles.each do |a|
+      .article
+        %span
+          %h2.subject= a.subject
+        - if a.question? && !a.question.empty?
+          .question
+            Вопрос участника:
+            .text= a.question
+        .text
+          - if a.question? && !a.question.empty?
+            .answer Ответ:
+          .body= a.text.strip_tags.truncate( 535, separator: ' ', omission: "{{article=#{a.id}}}" ).gsub( /&nbsp;|&mdash;/, '' )
+        .author
+          Автор
+          .name= a.author
+        .date
+          От:
+          .created_at= a.created_at.strftime("%d.%m.%y")
+        - if admin_signed_in?
+          .edit-links
+            = link_to 'Редактировать', edit_article_path(a)
+            = link_to 'Удалить', article_path(a), method: :delete
+    = will_paginate @articles
+    - if admin_signed_in?
+      .admin-links
+        = link_to 'Создать статью', new_article_path
+  = render 'layouts/sidebar_only_group'

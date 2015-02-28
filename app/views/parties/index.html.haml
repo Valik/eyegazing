@@ -1,0 +1,48 @@
+- provide :title, 'Вечеринки'
+
+.parties
+  .content
+    = render 'layouts/page_description'
+    .parties-container
+      - @parties.each do |party|
+        .party
+          %span
+            %h2.title= party.name
+          .description-party= party.description.html_safe
+          - if party.address?
+            .address
+              .title Адрес:
+              = party.address
+          - if party.ps?
+            .ps
+              .title P.S.:
+              = party.ps
+          .foot
+            .structure-rules
+              .structure
+                = link_to structure_path do
+                  Структура
+                  %br Свиданий без Слов
+              .separator
+              .rules
+                = link_to rules_path do
+                  Ознакомиться с правилами
+                  %br Свиданий без Слов
+            .become-member= link_to 'Подать заявку', new_request_path( party )
+          - if admin_signed_in?
+            .admin-sub-links
+              = link_to 'Редактировать информацию', edit_party_path( party )
+    .money-back
+      .title Гарантия возврата денег
+      .ps
+        %p
+          %span.left
+          .text
+            Если ты посчитаешь что зря потратил время и больше не захочешь становиться участником вечеринок Свидания Без Слов, мы вернём тебе 100% стоимость твоего билета без лишних вопросов в течении двух дней после вечеринки (
+            .yellow
+              при условии твоего участия на ней
+            ).
+    - if admin_signed_in?
+      .admin-links
+        = link_to 'Создать вечеринку', new_party_path
+  = render 'layouts/sidebar_only_group'

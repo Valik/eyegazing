@@ -1,0 +1,62 @@
+- provide :title, 'Фото и видео отчёты с прошедших Свиданий без Слов'
+
+.recalls
+  .content
+    = render 'layouts/page_description'
+    .clear
+    .album-container.photo-album
+      .album
+        = link_to albums_photo_path do
+          = image_tag @photo_last.photo_url(:site, :album_thumb) unless @photo_last.nil?
+          .photo-icon.icon
+          .title ФОТО
+          .watch смотреть
+          .foot Фото со Свиданий без Слов
+      .last-update
+        Последнее добавление:
+        %br= @photo_last.created_at.strftime("%d.%m.%y") unless @photo_last.nil?
+    .album-container.video-album
+      .album
+        = link_to albums_video_path do
+          = image_tag @video_last.photo.photo_url(:site, :album_thumb) if !@video_last.nil? && @video_last.try(:photo)
+          .video-icon.icon
+          .title ВИДЕО
+          .watch смотреть
+          .foot
+            Видео со свиданий без Слов +
+            .i эмоции участников после вечеринки
+      .last-update
+        Последнее добавление:
+        %br= @video_last.created_at.strftime("%d.%m.%y") unless @video_last.nil?
+    .clear
+    %span
+      %h2.recalls-title Отзывы
+    .how-is-it Как это... Смотреть в глаза...
+    .recalls-content
+      - if @recalls.empty?
+        .recall
+          Отзывов пока нет.
+      - else
+        - @recalls.each do |r|
+          .recall
+            .name-date
+              .name= r.name
+              .date= r.published_at.strftime( "%d.%m.%y" )
+            .text= r.text
+        .clear
+        = will_paginate @recalls
+    .clear
+    = simple_form_for @recall, url: 'recalls', html: { class: 'guest-form' } do |r|
+      .title Оставить свой отзыв:
+      = r.input :name, placeholder: 'Имя', label: 'обязательно'
+      .clear
+      = r.input :email, placeholder: 'E-mail', label: 'обязательно'
+      .clear
+      = r.input :text, as: :text, placeholder: 'Твой отзыв...', label: false
+      .clear
+      .actions
+        .disclaimer * комментарий проверяется модератором
+        = r.submit 'Опубликовать'
+    - if admin_signed_in?
+      .admin-links= link_to 'Модерировать отзывы', recalls_moderation_path
+  = render 'layouts/sidebar_only_group'

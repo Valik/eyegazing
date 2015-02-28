@@ -1,0 +1,366 @@
+@import base
+
+.clear
+  clear: both
+
+.link-spanner
+  position:     absolute
+  width:        100%
+  height:       100%
+  top:          0
+  left:         0
+  z-index:      1
+  /* edit: fixes overlap error in IE7/8, */
+  /*  make sure you have an empty gif     */
+  /*  background-image: url('empty.gif') */
+
+.main
+  width:        $width-main
+  min-width:    $width-main
+  margin:       0 auto
+  display: block
+  overflow: hidden
+
+html, body
+  height: 100%
+  width: 100%
+  padding: 0
+  margin: 0
+
+body
+  background-image: image-url("bg-fill.jpg")
+  background-position: left bottom
+  background-repeat: repeat
+
+.bg-fill
+  position: absolute
+  height: 100%
+  width: 100%
+  padding: 0
+  margin: 0
+  z-index: -999
+  // padding-bottom: 660px
+  .filler, .fader
+    // padding-bottom: 550px
+    height: 100%
+    width: 100%
+    z-index: -999
+  .filler
+    background-image: image-url("bg-fill.jpg")
+    background-position: left bottom
+    background-repeat: repeat
+  .fader
+    position: fixed
+    background: rgba( 17,4,4,.45 )
+
+
+.wrapper
+  min-height: 100%
+  height: auto !important
+  height: 100%
+
+  // padding-bottom: -50px
+  // margin: 0 auto -660px
+
+.push
+  height: 760px
+  margin-bottom: 50px
+  // padding-bottom: 150px
+  clear: both
+
+/* ******** NOTICES ******* */
+.flash
+  position: fixed
+  top: 60px
+  width:    100%
+  min-height: 60px
+  z-index: -1
+  display: none
+  .flash-body
+    +border-radius($border-radius-7)
+    +box-sizing(border-box)
+    padding: 20px 55px 20px 20px
+    margin: 0 auto
+    width: 600px
+    z-index: 500
+    background: #fff
+    border: 1px solid #000
+    position: relative
+    color: #000
+    .notice, .alert
+      line-height: 30px
+      display: inline-block
+    .close
+      top: 10px
+      right: 10px
+
+
+
+/* ******** BODY  ********* */
+body
+  margin:       0
+  background-color: #000
+  color:       $color-white-100
+  font-weight:  regular
+  font-family:  arial, verdana, helvetica, sans-serif
+  font-size:    18px
+  line-height:  18px
+
+.main
+  padding: 25px 10px 35px 10px
+  margin-bottom: -150px
+
+
+// TO NOT CONFLICT WITH SOME DEFAULT CLASSES HIDDEN
+textarea, input
+  font-size: 18px
+  line-height: 18px
+  color:       #fff
+  font-weight:  regular
+  font-family:  arial, verdana, helvetica, sans-serif
+  margin: 0
+
+input.button
+  @extend %button
+
+input.button.like-a-link
+  padding: 0 10px
+  line-height: 36px
+  height: 36px
+  &:hover
+    color: #000
+
+.hidden-custom
+  display: none
+
+@font-face
+  font-family: HortensiaFont
+  src: font-url('Hortensia.ttf')
+
+
+p, ol, ul, td, b
+  color:       $color-white-100
+  font-weight:  regular
+  font-family:  arial, verdana, helvetica, sans-serif
+  font-size:    18px
+  line-height:  26px
+
+.font-body
+  color:       $color-white-100
+  font-weight:  regular
+  font-family:  arial, verdana, helvetica, sans-serif
+  font-size:    18px
+  line-height: 26px
+
+b
+  font-family:  arial, verdana, helvetica, sans-serif
+
+.titleable
+  font-family: HortensiaFont, arial, verdana, helvetica, sans-serif
+  font-weight: 400
+  color: $color-yellow
+
+h1
+  @extend p
+  font-family: HortensiaFont, arial, verdana, helvetica, sans-serif
+  font-weight: 400
+  font-size:   26px
+  margin: 0
+  line-height: 30px
+  color: $color-yellow
+h2, h3, h4
+  @extend h1
+h2
+  font-size: 22px
+h3
+  font-size: 20px
+h4
+  font-size: 18px
+
+pre
+  background-color: #eee
+  padding:      10px
+  font-size:    11px
+
+a
+  color:        $color-yellow
+  text-decoration: underline
+  font-smooth:  always
+  +transition(color 0.3s ease)
+  &:visited
+    color:      $color-yellow
+  &:hover
+    text-decoration: underline
+
+div
+  &.field, &.actions
+    margin-bottom: 10px
+
+#notice
+  // color:        $orange
+
+.field_with_errors
+  // padding:      2px
+  border: 1px solid red
+  display:      table
+  span
+    display: none
+
+#error_explanation
+  width:        450px
+  padding-bottom: 0
+  margin-bottom: 20px
+  h2
+    text-align:   left
+    padding:      5px 5px 5px 15px
+    font-size:    16px
+    margin:       -7px
+    margin-bottom: 0px
+    font-family: arial, verdana, helvetica, sans-serif
+    border: 1px solid #c00
+    color:         #fff
+  ul li
+    font-size:     12px
+    list-style:    square
+
+
+.close-small
+  cursor: pointer
+  position: absolute
+  width: 15px
+  height: 15px
+  transition: background-color ease 0.3s
+  .x, .y
+    background: #a3a3a3
+    position: absolute
+    +rotate($default-rotate)
+  .x
+    left:   -2px
+    top:    7px
+    height: 1px
+    width:  19px
+  .y
+    left:   7px
+    top:    -2px
+    height: 19px
+    width:  1px
+  &:hover
+    .x, .y
+      background: #000
+
+
+.content
+  float: left
+  width: 660px
+
+.sidebar
+  float: right
+  width: 230px
+  .button
+    margin-top: 20px
+    @extend %button
+    text-align: center
+    a
+      padding: 15px 25px
+
+  .our-group
+    .name, .vk
+      float: left
+    .name
+      font-size: 26px
+    .vk
+      margin: -6px 0 0 15px
+
+  .subscrite-to-new-anonces
+    margin-top: 60px
+    float: left
+    a
+      font-size: 14px
+
+
+
+.marker-bullet
+  margin-top: 5px
+  width: 11px
+  height: 11px
+  +border-radius( 50% )
+  background: $color-yellow
+  float: left
+
+form
+  overflow: hidden
+  input, textarea
+    width: 545px
+    +box-sizing( border-box )
+    +border-radius( $border-radius-7 )
+    border: 0
+    margin-top: 10px
+    clear: both
+    float: left
+    color: #000
+  input, label
+    padding: 0 10px
+    height: 40px
+  textarea
+    padding: 10px
+    min-height: 200px
+    height: 200px
+  textarea.ps
+    min-height: 200px !important
+    height: 200px !important
+  input[type=submit]
+    margin-top: 10px
+    background: grey
+    opacity: 0.7
+    &:hover
+      opacity: 0.9
+  input.boolean
+    width: 20px
+  label
+    float: left
+    line-height: 40px
+    margin-top: 10px
+  .actions
+    float: left
+    overflow: hidden
+    .delete
+      clear: both
+      padding-top: 20px
+      a
+
+
+.admin-links
+  margin: 50px 0
+  overflow: hidden
+  a
+    display: inline-block
+    margin-top: 10px
+    text-decoration: underline
+    line-height: 20px
+    &:first-child
+      margin-top: 0px
+
+.mce-tinymce.mce-container.mce-panel
+  margin-top: 10px
+  float: left
+  width: 545px
+
+
+#overlay
+  position: fixed
+  width: 100%
+  height: 100%
+  opacity: 0.9
+  z-index: 9999
+  background-image: image-url('bg-overlay.png')
+  cursor: pointer
+
+.pagination
+  text-align: center
+  em.current
+    font-style: normal
+    color: $color-yellow
+    text-decoration: underline
+  a
+    text-decoration: none
+

@@ -1,0 +1,8 @@
+= simple_form_for @article, url: "/articles" + ( @article.new_record? && '' || "/#{@article.id}" ) do |a|
+  = a.input :subject, as: :string, placeholder: 'Заголовок...', required: false, label: false
+  = a.input :question, as: :string, placeholder: 'Вопрос участника?...', label: false
+  = a.input :text, placeholder: 'Текст статьи...', as: :text, input_html: { class: 'tinymce' }, label: false
+  = a.input :author, as: :string, placeholder: 'Автор...', label: false
+  .actions
+    = a.submit ( @article.new_record? && 'Создать' || 'Сохранить' )
+= tinymce

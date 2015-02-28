@@ -1,0 +1,12 @@
+%h1 Редактирование видео
+= simple_form_for @video, html: { class: 'form-video' }, method: :patch do |v|
+  = v.input :name, as: :string, label: false, placeholder: 'Заголовок...'
+  = v.input :video_main, as: :boolean, boolean_style: :inline, label: 'Показывать на главной?'
+  = v.input :landing, as: :boolean, boolean_style: :inline, label: 'Показывать на "крыльце"?'
+  = v.input :created_at, as: :datepicker, label: false, placeholder: 'Дата создания видео'
+  = v.submit 'Сохранить'
+
+%br
+%br
+%br
+= link_to 'Назад в альбом', :back

@@ -1,0 +1,16 @@
+= simple_form_for @page do |f|
+  - if @page.errors.any?
+    #error_explanation
+      %span
+        %h2 При заполнении формы обнаружены следующие ошибки:
+      %ul
+        - @page.errors.full_messages.each do |message|
+          %li= message
+  = f.text_field :title, placeholder: 'Заголовок...'
+  = f.text_area :content, placeholder: 'Страница...', class: 'tinymce'
+  = f.text_area :ps, placeholder: 'Последний пункт с вертикальной чертой...', class: 'tinymce' unless /^\/$/ =~ @page.name
+  = f.text_field :sidebar_title, placeholder: 'Заголовок для сайдбара...' if /^\/$|^\/свидания-без-слов$/ =~ @page.name
+  = f.text_field :meta_description, placeholder: 'Поле description для SEO...'
+  = tinymce
+  .actions
+    = f.submit 'Обновить информацию'

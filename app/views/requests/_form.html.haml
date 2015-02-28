@@ -1,0 +1,105 @@
+:javascript
+  $(document).ready( function() {
+    var current_year = new Date().getFullYear();
+    current_date = $(this).find('input#request_party_date').val().split('/');
+    $(this).find('input#request_party_date[type=hidden]').val(current_year + '-' + current_date[1] + '-' + current_date[0]);
+
+    $('form').on( 'submit', function(e) {
+      var match, stop_form = false;
+      $(this).find('input').not('#request_vk, #request_photo').each(function(indx) {
+        switch( $(this).attr('id') ) {
+          case 'request_email':
+            match = window.validateEmail($(this).val())
+            if (match)
+              $(this).css( 'border', '1px solid rgba( 217,217,217,1)' );
+            else {
+              $(this).css('border', '1px solid red');
+              e.preventDefault();
+              stop_form = true;
+            }
+            break;
+          default:
+            if( $(this).val() === '' ) {
+              $(this).css('border', '1px solid red')
+              e.preventDefault()
+              stop_form = true;
+            }
+            else
+              $(this).css( 'border', '1px solid rgba( 217,217,217,1 )');
+            break;
+        }
+      });
+      if ( !stop_form ) {
+        window.throbber.appendTo( $( this )[0] ).start();
+        $( this ).children('canvas').css({'margin':'10px 10px 0 0', 'float':'right'});
+      }
+    });
+
+    $('form input#request_photo').on('change', function(e) {
+      if( !$(this).siblings('.photo-mark').length ) $(this).after("<div class='photo-mark'></div>");
+      var msg;
+      if( $(this).val() === '' )
+        msg = 'Фото не прикреплено.';
+      else {
+        var reader = new FileReader(),
+            image  = new Image(),
+            file = this.files[0]
+            $photo_input = $(this);
+
+
+        reader.readAsDataURL(file);
+        reader.onload = function(_file) {
+          image.src = _file.target.result;
+          image.onload = function() {
+            if (~~(file.size/1024) > 1100) {
+              $photo_input.val('');
+              msg = 'Фото не прикреплено.';
+              window.flash_show({status: 'error', status_text: 'Размер фотографии превышает 1 МБ.'});
+            } else msg = 'Фото прикреплено.';
+
+            $photo_input.siblings('.photo-mark').text(msg);
+          };
+          image.onerror= function() {
+            $photo_input.val('');
+            window.flash_show({status: 'error', status_text: "Неверный формат файла: " + file.type});
+            msg = 'Фото не прикреплено.';
+            $photo_input.siblings('.photo-mark').text(msg);
+          };
+        }
+
+      }
+    });
+  });
+
+= simple_form_for @request, html: { class: 'guest-form' } do |f|
+  - if @request.errors.any?
+    #error_explanation
+      %span
+        %h2 При заполнении формы обнаружены следующие ошибки:
+      %ul
+        - @request.errors.full_messages.each do |message|
+          %li= message
+  %h1 Подать заявку на участие:
+  .double.name-age
+    = f.text_field :name, placeholder: 'Имя'
+    = f.text_field :age, placeholder: 'Возраст'
+  = f.text_field :email, placeholder: 'Email'
+  .dotted
+  = f.input :party_date, as: :datepicker, input_html: { value: !@party.nil? && @party.date.strftime( "%d/%m" ) || '' }, placeholder: 'Дата', label: false
+  = f.label :party_date, 'дата вечеринки, на которую ты подаёшь заявку'
+  = f.text_field :vk, placeholder: 'Вставить ссылку'
+  = f.label :vk, 'ссылка на твою страницу Вконтакте'
+  %p.or ИЛИ
+  .clear
+  .photo-container
+    = f.file_field :photo
+    .replacer Загрузить фото с компьютера
+  .dotted
+  .question
+    %strong Ответ на вопрос:
+    Почему ты хочешь попасть именно на Свидания без Слов?
+    .concrete (постарайся ответить как можно более искренне и развёрнуто)
+  = f.text_area :answer, placeholder: 'Твой ответ...'
+  -# = f.input :subscribed, label: 'Я хочу получать уведомления о новых вечеринках и других обновлениях сайта', input_html: { value: '1', checked: true, class: 'css-checkbox' }, label_html: { class: 'css-label' }
+  .actions
+    = f.submit 'Отправить'

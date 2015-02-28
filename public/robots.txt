@@ -1,0 +1,16 @@
+# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# To ban all spiders from the entire site uncomment the next two lines:
+
+
+User-agent: *
+Disallow: /oplata
+Disallow: /%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B0
+Disallow: /podat-zajavku
+Disallow: /%D0%BF%D0%BE%D0%B4%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D1%83
+Disallow: /podat-zajavku/
+Disallow: /%D0%BF%D0%BE%D0%B4%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D1%83/
+Disallow: /admin
+Disallow: /admins/sign_in
+Disallow: /informacionnaja-stranica
+Disallow: /%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0

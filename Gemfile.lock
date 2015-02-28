@@ -1,0 +1,334 @@
+GIT
+  remote: git://github.com/Compass/compass-rails.git
+  revision: cd406796724f7bebcd58f92a31507ba56f3d1b18
+  specs:
+    compass-rails (2.0.0)
+      compass (~> 1.0.0)
+
+GIT
+  remote: git://github.com/heroku/rails3_serve_static_assets.git
+  revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
+  specs:
+    rails3_serve_static_assets (0.0.1)
+
+GIT
+  remote: git://github.com/heroku/rails_log_stdout.git
+  revision: f9a92758f2d5dca5a88bf899a83256302f16ab6c
+  specs:
+    rails_log_stdout (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      mail (~> 2.5, >= 2.5.4)
+    actionpack (4.1.6)
+      actionview (= 4.1.6)
+      activesupport (= 4.1.6)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    actionview (4.1.6)
+      activesupport (= 4.1.6)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+    activemodel (4.1.6)
+      activesupport (= 4.1.6)
+      builder (~> 3.1)
+    activerecord (4.1.6)
+      activemodel (= 4.1.6)
+      activesupport (= 4.1.6)
+      arel (~> 5.0.0)
+    activesupport (4.1.6)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    addressable (2.3.6)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
+    arel (5.0.1.20140414130214)
+    auto_html (1.6.4)
+      redcarpet (~> 3.1)
+      rinku (~> 1.5.0)
+    awesome_print (1.2.0)
+    aws-sdk (1.54.0)
+      aws-sdk-v1 (= 1.54.0)
+    aws-sdk-v1 (1.54.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+    bcrypt (3.1.7)
+    better_errors (2.0.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    builder (3.2.2)
+    bullet (4.14.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    chunky_png (1.3.1)
+    coderay (1.1.0)
+    coffee-rails (4.0.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.3.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.8.0)
+    compass (1.0.1)
+      chunky_png (~> 1.2)
+      compass-core (~> 1.0.1)
+      compass-import-once (~> 1.0.5)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      sass (>= 3.3.13, < 3.5)
+    compass-core (1.0.1)
+      multi_json (~> 1.0)
+      sass (>= 3.3.0, < 3.5)
+    compass-import-once (1.0.5)
+      sass (>= 3.2, < 3.5)
+    debug_inspector (0.0.2)
+    devise (3.4.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    erubis (2.7.0)
+    excon (0.39.6)
+    execjs (2.2.1)
+    ffi (1.9.5)
+    fog (1.23.0)
+      fog-brightbox
+      fog-core (~> 1.23)
+      fog-json
+      fog-softlayer
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-brightbox (0.5.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto
+    fog-core (1.24.0)
+      builder
+      excon (~> 0.38)
+      formatador (~> 0.2)
+      mime-types
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    fog-softlayer (0.3.19)
+      fog-core
+      fog-json
+    formatador (0.2.5)
+    gibbon (1.1.3)
+      httparty
+      multi_json (>= 1.3.4)
+    haml (4.0.5)
+      tilt
+    highline (1.6.21)
+    hike (1.2.3)
+    htmlentities (4.3.2)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    i18n (0.6.11)
+    inflecto (0.0.2)
+    ipaddress (0.8.0)
+    jbuilder (2.2.0)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
+    jquery-rails (3.1.2)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.0)
+      railties (>= 3.2.16)
+    json (1.8.1)
+    kgio (2.9.2)
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
+    mime-types (2.3)
+    mini_portile (0.6.0)
+    minitest (5.4.2)
+    multi_json (1.10.1)
+    multi_xml (0.5.5)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    netrc (0.7.7)
+    newrelic_rpm (3.9.5.251)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
+    orm_adapter (0.5.0)
+    pg (0.17.1)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rails (4.1.6)
+      actionmailer (= 4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      activemodel (= 4.1.6)
+      activerecord (= 4.1.6)
+      activesupport (= 4.1.6)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.1.6)
+      sprockets-rails (~> 2.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
+    railties (4.1.6)
+      actionpack (= 4.1.6)
+      activesupport (= 4.1.6)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
+    rake (10.3.2)
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+    rdoc (4.1.2)
+      json (~> 1.4)
+    redcarpet (3.1.2)
+    responders (1.1.1)
+      railties (>= 3.2, < 4.2)
+    rest_client (1.7.3)
+      netrc (~> 0.7.7)
+    rinku (1.5.1)
+    rmagick (2.13.3)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
+    rvm-capistrano (1.5.4)
+      capistrano (~> 2.15.4)
+    sass (3.4.5)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    sprockets (2.11.0)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
+    thor (0.19.1)
+    thread_safe (0.3.4)
+    tilt (1.4.1)
+    tinymce-rails (4.1.5)
+      railties (>= 3.1.1)
+    tinymce-rails-imageupload (4.0.16.beta)
+      railties (>= 3.2, < 5)
+      tinymce-rails (~> 4.0)
+    tinymce-rails-langs (4.20140129)
+      tinymce-rails (~> 4.0)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uglifier (2.5.3)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    uniform_notifier (1.6.2)
+    video_info (2.3.1)
+      addressable
+      htmlentities
+      multi_json
+    warden (1.2.3)
+      rack (>= 1.0)
+    will_paginate (3.0.7)
+    yandex-money-sdk (0.11.0)
+      httparty (~> 0.13, >= 0.13.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  annotate
+  auto_html
+  awesome_print
+  aws-sdk
+  better_errors
+  binding_of_caller
+  bullet
+  capistrano (~> 2.15.5)
+  carrierwave
+  coffee-rails
+  compass-rails!
+  devise
+  execjs
+  fog
+  gibbon
+  haml
+  jbuilder
+  jquery-rails
+  jquery-ui-rails
+  mail
+  meta-tags
+  newrelic_rpm
+  nokogiri
+  pg
+  puma
+  quiet_assets
+  rails (~> 4.1.1)
+  rails3_serve_static_assets!
+  rails_12factor
+  rails_log_stdout!
+  redcarpet
+  rest_client
+  rmagick
+  russian
+  rvm-capistrano
+  sass
+  sass-rails (= 4.0.1)
+  sdoc
+  simple_form
+  sprockets (= 2.11.0)
+  tinymce-rails
+  tinymce-rails-imageupload (~> 4.0.0.beta)
+  tinymce-rails-langs
+  uglifier
+  unicorn
+  video_info
+  will_paginate (~> 3.0)
+  yandex-money-sdk

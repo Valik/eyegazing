@@ -1,0 +1,97 @@
+@import base
+
+ul
+  list-style-type: none
+  padding: 0px
+  margin: 0px
+  li
+    padding-left: 20px
+    background-image: image-url("list-style-image.png")
+    background-repeat: no-repeat
+    background-position: 3px 7px
+
+ol
+  counter-reset: li-counter
+  list-style-type: none
+  margin: 0px 0px 0px 1.5em
+  padding: 0px
+  li
+    margin-bottom: 20px
+    position: relative
+    padding-left: 10px
+    &:before
+      position: absolute
+      top: 0
+      left: -0.8em
+
+      font-weight: bold
+      font-size: 30px
+      color: $color-yellow
+      line-height: 1
+      text-align: right
+
+      content: counter(li-counter)
+      counter-increment: li-counter
+
+.description-main
+  clear: both
+  text-align: left
+  .description
+    margin-top: 20px
+    .ps
+      position: relative
+      clear: both
+      .left
+        position: absolute
+        width: 1px
+        height: 100%
+        left: 0
+        +box-sizing( border-box )
+        background: $color-yellow
+        float: left
+      p
+        padding-left: 20px
+
+.rules, .structure
+  ol, p, td
+    font-size: 16px
+  .ps
+    p
+      font-size: 14px
+      line-height: 22px
+  img
+    border: 1px solid $color-gray
+    cursor: pointer
+
+.zoom-on-img
+  position: relative
+  cursor: pointer
+  &:hover
+    .zoom-tool
+      opacity: 1
+  .zoom-tool
+    background-image: image-url( "icons-main.png" )
+    width: 37px
+    height: 40px
+    background-position: -39px -1px
+    position: absolute
+    right: 8px
+    top: 5px
+    opacity: 0
+    +transition( opacity 0.5s ease )
+
+.entity-button
+    @extend %button
+    width: 380px
+    margin-top: 40px
+    a
+      font-size: 26px
+      line-height: 25px
+
+.img-zoomed
+  cursor: pointer
+  z-index: 10000
+  top: 150px
+  margin: 0 auto
+  position: fixed
+  left: 50%

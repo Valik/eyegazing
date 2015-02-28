@@ -1,0 +1,10 @@
+- provide :title, @page.title
+
+.sctructure
+	.content
+		= render 'layouts/page_description'
+		.entity-button= link_to 'Где познакомиться', where_to_meet_path
+		.entity-button= link_to 'Где найти девушку', where_to_find_a_girl_path
+		.entity-button= link_to 'Где найти парня', where_to_find_a_man_path
+		.entity-button= link_to 'Вечеринки знакомства', looking_for_party_path
+		.entity-button= link_to 'Быстрые свидания', speed_dating_path

@@ -1,0 +1,60 @@
+- provide :title, 'Модерация заявок'
+
+.requests.recalls.recalls-moderation
+  .content
+    .description-main
+      %h1.title Модерация заявок
+    .recalls-list
+      .head
+        .num #
+        .name Имя
+        .age Возраст
+        .email E-mail
+        .party_date Дата вечеринки
+        .vk-link VK
+        .delete
+      .body
+        - @requests.each_with_index do |r,i|
+          .recall
+            = link_to request_path( r.id ), remote: true, data: { type: 'json' }, class: 'show' do
+              .num= i + 1
+              .name= r.name
+              .age= r.age
+              .email= r.email
+              .party_date= r.party_date.strftime( "%d.%m.%y" )
+              .vk-link= link_to r.vk, url_with_protocol(r.vk), target: '_blank'
+              .delete
+                = link_to request_path( r.id ), remote: true, method: :delete, data: { type: 'json', confirm: 'Ты точно хочешь удалить эту заявку?' }, class: 'delete' do
+                  .close-small
+                    .x
+                    .y
+              - unless r.photo.nil?
+                .clear
+                %a.fancybox.subscriber-photo{ rel: 'gallery1', href: r.photo.photo_url }
+                  = image_tag r.photo.photo_url, alt: ''
+        .clear
+        .admin-links
+          Всего заявок:
+          = Request.all.count
+
+  = render 'layouts/sidebar_only_group'
+
+
+-# %h1 Listing requests
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Имя
+-#       %th Возраст
+-#       %th Email
+-#       %th Дата вечеринки
+-#       %th
+-#   - if @requests.empty?
+-#     Заявок нет.
+-#   - else
+-#     %tbody
+-#       %tr
+-#       - @requests.each do |request|
+-#         %tr
+-#           %td= request.name
+-#           %td= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' }

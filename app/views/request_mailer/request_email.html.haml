@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %h1 На вечеринку поступила новая заявка!
+    %h2 Данные участника:
+    %p= "Имя: #{@request.name}"
+    %p= "Email: #{@request.email}"
+    %p= "Возраст: #{@request.age}"
+    %p= "Дата вечеринки: #{@request.party_date.strftime("%d.%m.%y")}"
+    %p= "Ссылка на vk: #{@request.vk}"
+    %p= "Ответ на вопрос - почему я хочу попасть на вечеринку: '#{simple_format(@request.answer).html_safe}'"
+    - if @request.try(:photo)
+      %p= "Ссылка на фото: #{@request.photo.photo_url}"
+    - else
+      %p= "Фотографии к заявке не прикреплено."
+
+    %p Это конец письма. Хорошего дня!

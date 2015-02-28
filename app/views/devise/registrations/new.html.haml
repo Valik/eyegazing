@@ -1,0 +1,10 @@
+%h1 Регистрация
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true, label: false, placeholder: 'Введите email...'
+    = f.input :password, required: true, label: false, placeholder: 'Введите пароль...'
+    = f.input :password_confirmation, required: true, label: false, placeholder: 'Введите пароль ещё раз...'
+  .form-actions
+    = f.button :submit, "Зарегистрироваться"
+= render "devise/shared/links"

@@ -1,0 +1,139 @@
+@import base
+
+.edit-inline-form
+  height: 80px
+  input
+    width: 200px
+    font-size: 14px
+    border: 1px solid #fff
+    padding: 5px
+    +border-radius(5px)
+    outline: none
+    color: #000
+  .input
+    float: left
+    margin-right: 10px
+  a
+    font-size: 14px
+    cursor: pointer
+
+.embed-video
+  iframe
+    border: 5px solid #fff
+    position: fixed
+    top: 50%
+    height: 450px
+    width: 675px
+    left: 50%
+    margin: -225px 0 0 -340px
+    z-index: 10000
+
+.albums
+  .photos, .videos
+    overflow: hidden
+  .see-other
+    font-size: 14px
+    text-align: right
+    line-height: 21px
+    margin: 30px 0
+    a
+      text-decoration: none
+      color: #fff
+      .vk
+        float: right
+        margin-left: 5px
+  h1.title
+    margin-bottom: 35px
+  .photos
+  .photos-row
+    .maximized-container
+      min-height: 240px !important
+    .photo-container
+      width: 148px
+      height: 200px
+      float: left
+      margin-left: 22px
+      &:first-child
+        margin-left: 0px
+      .photo
+        width: 148px
+        height: 148px
+        overflow: hidden
+        +box-sizing(border-box)
+        border: 1px solid rgba(255,255,255, .6)
+        background: rgba(255,255,255, .1)
+        text-align: center
+        position: relative
+        .photo-inner-container
+          position: relative
+          float: left
+          img
+            height: 146px
+            display: block
+            position: relative
+            cursor: pointer
+      .date
+        color: rgba(172,172,172,1.0)
+        font-size: 12px
+        margin-top: 5px
+        .created_at
+          display: inline
+      a
+        font-size: 14px
+        cursor: pointer
+    .video-container
+      height: 200px
+      .title
+        line-height: 20px
+        font-size: 13px
+        overflow: hidden
+      .photo-inner-container
+        position: relative
+        .play
+          cursor: pointer
+          width: 50px
+          height: 50px
+          left: 50px
+          top: 50px
+          padding: 13px 0 0 18px
+          position: absolute
+          .triangle
+            border-width: 12px 0 12px 20px
+  .admin-links
+    clear: both
+    .add
+      margin-top: 25px
+      .name
+        display: block
+      form
+        position: relative
+        z-index: 2
+        input[type='file']
+          margin-top: 10px
+          opacity: 0
+          z-index: 2
+          width: 180px
+          height: 30px
+        input[type='checkbox']
+          margin-top: 18px
+          height: 23px
+        .replacer, input[type='submit']
+          font-size: 14px
+          border: 1px solid #fff
+          padding: 5px
+          +border-radius(5px)
+        .replacer
+          position: absolute
+          z-index: -1
+          top: 10px
+        canvas
+          margin-top: 10px
+      form.form-video
+        input[type='submit']
+          background: #000
+          color: #fff
+          width: auto
+          height: auto
+        .replacer
+          bottom: 41px
+          top: auto

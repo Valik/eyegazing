@@ -1,0 +1,21 @@
+.requests
+  .content
+    = render 'layouts/page_description'
+    .clear
+    = render 'form'
+    .clear
+    %p
+      Указывай только свою страницу (или своё фото). Мы отвечаем за вечеринку и за то, какие люди там будут, перед всеми участниками!
+    %p
+      По любым вопросам обращайся в
+      = link_to 'ЛС Вконакте', 'http://vk.com/andreyegazing'
+      или пиши на почту
+      = mail_to 'eyegaz@gmail.com'
+    %p
+      P.S.: Я тоже не люблю спам и не собираюсь делиться ни с кем твоими личными данными.
+    %p
+      Увидимся на Свиданиях без Слов…
+    %p.last
+      %i Андрей
+
+  = render 'layouts/sidebar_only_group'

@@ -1,0 +1,59 @@
+- js 'http://vk.com/js/api/share.js?90'
+
+:javascript
+  $(document).ready( function() {
+    $('.landing .video.video-main .play').on('click', function() {
+      $('.landing .video.video-main').addClass('playing');
+      $('.video-main iframe').load(function() {
+        $('.video-main > .main-embed-video > iframe').contents().find('.controls-wrapper').css('display', 'none');
+      });
+    });
+    $('.landing .video.video-main .play').click();
+  });
+
+.welcome.landing
+  .hat
+  %h1 Свидания без слов в Питере
+  .content
+    .video.video-main
+      - unless @main_video.nil?
+        = image_tag @main_video.photo.photo_url(:site, :main), alt: ''
+      .play
+        .triangle
+      - unless @main_video.nil?
+        .video{ data: { link: @main_video.link } }
+      .share
+        .share-with-vk
+          .plus
+          = link_to "https://vk.com/share.php?url=#{u(request.original_url)}&title=#{URI.encode('Свидания без слов в Питере')}&image=#{request.protocol + request.host_with_port + '/photos/share_avatar.jpg'}&noparse=true", { onclick: "javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" } do
+            .title Поделиться...
+            .vk
+    = render 'layouts/page_description'
+
+    = form_tag subscribe_path, method: 'post' do
+      = text_field_tag 'FNAME', nil, placeholder: 'Имя', class: 'input'
+      .clear
+      = text_field_tag 'AGE', nil, placeholder: 'Возраст', class: 'input'
+      .clear
+      = text_field_tag 'EMAIL', nil, placeholder: 'Email', class: 'input'
+      .clear
+      = text_field_tag 'b_4bf0869d20f3e9481c368cd3b_fbe2cbfa25', '', class: 'input new'
+      .clear
+      = button_tag 'Подписаться на новости и перейти на сайт', class: 'button'
+
+    .about-spam
+      Я тоже не люблю спам. Я не собираюсь делиться ни с кем твоими личными данными.
+  .sidebar
+    .video-recalls
+      .titleable= @page.sidebar_title
+
+      - @videos.each_with_index do |video, i|
+        .video
+          .video-small
+            = image_tag video.photo.photo_url(:site, :sidebar), alt: ''
+            .play
+              .triangle
+            .video{ data: { link: video.link } }
+          -# .name= video.name
+          - unless @videos.length - 1 == i
+            .separator

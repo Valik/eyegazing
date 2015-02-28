@@ -1,0 +1,45 @@
+- provide :title, 'Видеоотчёты с прошедших Свиданий без Слов'
+- js 'https://www.google.com/jsapi', 'https://www.youtube.com/iframe_api'
+- js 'albums'
+
+#player
+.albums
+  .content
+    .videos
+      %h1.title Видеоотчёты с прошедших Свиданий без Слов
+      - if @videos.empty?
+        .blank Видео пока отсутствуют.
+      - else
+        - @videos.in_groups_of(4,false) do |videos_row|
+          .photos-row
+            - videos_row.each do |v|
+              .photo-container.video-container{ class: admin_signed_in? && 'maximized-container' || '' }
+                .photo
+                  .photo-inner-container
+                    = image_tag v.photo.photo_url(:site, :thumb), alt: ''
+                    .play
+                      .triangle
+                    .video{ data: { link: v.link } }
+                -# .date
+                -#   От
+                -#   .created_at= v.created_at.strftime("%d.%m.%y")
+                .title= v.name
+                - if admin_signed_in?
+                  = link_to 'Редактировать', edit_video_path(v)
+                  = link_to 'Удалить', video_path(v), method: :delete, remote: true, data: { type: 'json' }, class: 'delete'
+    .see-other
+      = link_to 'http://vk.com/videos-61365408' do
+        Смотреть остальные видео
+        .vk
+    = will_paginate @videos
+    - if admin_signed_in?
+      .admin-links
+        .add
+          = label_tag 'Добавление видео', nil, class: 'name'
+          = simple_form_for @video, html: { class: 'form-video', multipart: true}, data: { type: 'json' }, remote: true, method: :post do |v|
+            = v.input :name, as: :string, label: false, placeholder: 'Заголовок...'
+            = v.input :link, as: :string, label: false, placeholder: 'Ссылка на видео...'
+            = v.input :video_main, as: :boolean, boolean_style: :inline, label: 'Показывать на главной?'
+            = v.input :landing, as: :boolean, boolean_style: :inline, label: 'Показывать на "крыльце"?'
+            = v.submit 'Добавить', remote: true
+  = render 'layouts/sidebar_only_group'

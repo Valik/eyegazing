@@ -1,0 +1,18 @@
+= simple_form_for @party do |f|
+  - if @party.errors.any?
+    #error_explanation
+      %span
+        %h2 При заполнении формы обнаружены следующие ошибки:
+      %ul
+        - @party.errors.full_messages.each do |message|
+          %li= message
+  = f.text_field :name, placeholder: 'Введите название вечеринки...'
+  = f.text_area :description, placeholder: 'Опишите вечеринку...', class: 'tinymce'
+  = tinymce
+  = f.text_field :address, placeholder: 'Введите адрес...'
+  = f.text_field :ps, placeholder: 'Укажите пункт P.S. ...'
+  = f.input :date, as: :datepicker, placeholder: 'Выберите дату...', label: false
+  .actions
+    = f.submit @party.new_record? && 'Создать вечеринку' || 'Обновить информацию'
+    - unless @party.new_record?
+      .delete= link_to 'Удалить вечеринку', party_path(@party), method: :delete

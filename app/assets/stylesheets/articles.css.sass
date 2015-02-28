@@ -1,0 +1,45 @@
+@import base
+
+.articles
+  .article > .text
+    background-color: #6F6F6F
+    +border-radius(5px)
+    padding: 10px
+    p:first-child
+      margin-top: 0px
+  .article
+    margin-top: 36px
+    &:first-child
+      margin-top: 0px
+    h2
+      font-size: 24px
+      color: #fff
+      font-family:  arial, verdana, helvetica, sans-serif
+    .text, .author, .question
+      margin-top: 12px
+    .text, p, ol, ul, td, b
+      font-size: 16px
+      line-height: 22px
+      .answer
+        float: left
+        margin-right: 5px
+        font-size: 20px
+        line-height: 19px
+      .read-all
+        display: inline
+        a
+          font-size: 14px
+          font-style: italic
+    .author, .date
+      color: rgba(172,172,172,1.0)
+      font-size: 14px
+    .date
+      margin-top: 5px
+    .author .name, .date .created_at, .question .text
+      color: $color-yellow
+      display: inline
+    .edit-links
+      margin-top: 10px
+      font-size: 14px
+    .question, .question .text
+      font-size: 20px

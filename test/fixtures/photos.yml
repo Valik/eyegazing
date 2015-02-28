@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)      default("")
+#  photo          :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  photoable_id   :integer
+#  photoable_type :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  album_id: 
+
+two:
+  name: MyString
+  album_id: 

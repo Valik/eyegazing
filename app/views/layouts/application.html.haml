@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title= title_for yield(:title)
+    = stylesheet_link_tag     "application"
+    = javascript_include_tag  "application"
+    = yield :head
+    = csrf_meta_tags
+    = meta_description_for yield(:meta_description)
+
+  %body
+    .wrapper
+      .bg-fill
+        .fader
+      = render 'layouts/header' unless controller_name == 'welcome' && action_name == 'landing'
+      .flash{style: ( flash.empty? && '' || 'display: block; z-index: 1;' )}
+        - unless flash.empty?
+          .flash-body
+            .text
+              - flash.each do |name, msg|
+                = content_tag :div, msg, class: "#{name} h4"
+            .close.close-small
+              .x
+              .y
+      .main{ role: 'main' }
+        = yield
+      .push
+    = render 'layouts/footer'
+

@@ -1,0 +1,207 @@
+@import base
+
+.recalls
+  .photo-album
+    float: left
+    .foot
+      line-height: 45px
+  .video-album
+    float: right
+    .foot
+      line-height: 22px
+      .i
+        font-size: 12px
+        font-style: italic
+  .album-container
+    .album
+      width: 300px
+      height: 225px
+      // +box-sizing( border-box )
+      +border-radius( 18px )
+      border: 6px solid $color-gray
+      position: relative
+      text-align: center
+      background: white
+      a
+        display: block
+        color: $color-white-100
+        height: 100%
+        width: 100%
+        text-decoration: none
+        &:hover
+          .watch, .foot
+            opacity: 1
+          .title
+            opacity: 0
+        img
+          +border-radius( 11px )
+          width: 300px
+          height: 225px
+        .icon
+          background-image: image-url("icons-main.png")
+          right: 7px
+          top: 7px
+          position: absolute
+        .photo-icon
+          width: 43px
+          height: 36px
+          background-position: -79px -3px
+        .video-icon
+          width: 30px
+          height: 42px
+          background-position: -124px -3px
+        .title
+          color: #fff
+          line-height: 225px
+          width: 100%
+          top: 0
+          position: absolute
+          opacity: 1
+          +transition(opacity ease 0.3s)
+        .watch, .foot
+          background: rgba( 0,0,0, .6 )
+          position: absolute
+          opacity: 0
+          +transition( opacity 0.5s ease )
+        .watch
+          font-size: 14px
+          line-height: 24px
+          border: 1px solid rgba( 77,77,77, .6 )
+          left: 50%
+          width: 114px
+          margin-left: -57px
+          top: 50%
+          height: 24px
+          margin-top: -13px
+          +border-radius( 10px )
+        .foot
+          width: 100%
+          bottom: 0
+          height: 45px
+          +border-bottom-right-radius( 12px )
+          +border-bottom-left-radius( 12px )
+          font-size: 16px
+    .last-update
+      color: rgba( 172,172,172,1.0 )
+      float: left
+      margin: 20px 0 0 17px
+      font-size: 12px
+
+  .recalls-title
+    margin-top: 40px
+  .how-is-it
+    margin-top: 20px
+  .recalls-content
+    margin: 0 40px 0 65px
+    .recall
+      margin-top: 25px
+      float: left
+      clear: both
+      .name-date
+        width: 100%
+        float: left
+        .name, .date
+          float: left
+        .name
+          font-size: 16px
+          color: $color-yellow
+        .date
+          margin-left: 9px
+          font-size: 12px
+          color: rgba( 172,172,172,1.0 )
+      .text
+        margin: 19px 0 0 19px
+        font-size: 16px
+        float: left
+  form.guest-form
+    margin-top: 100px
+    .title
+      font-size: 24px
+    .input.recall_name
+      margin-top: 15px
+    .input.recall_name, .input.recall_email
+      float: left
+    label, input
+      clear: none
+    label
+      font-size: 12px
+      float: right !important
+    input
+      float: left
+    .actions
+      width: 100%
+      float: left
+      .disclaimer
+        height: 42px
+        font-size: 12px
+        width: 284px
+        margin-top: 10px
+        line-height: 32px
+        text-align: center
+        float: left
+      input[type='submit']
+        float: none !important
+
+  .recalls-list
+    .num, .name, .email, .date, .published, .delete
+      float: left
+      text-align: center
+      overflow: hidden
+    .num
+      width: 30px
+    .name
+      width: 210px
+    .email
+      width: 160px
+    .date
+      width: 100px
+    .published
+      width: 130px
+    .delete
+      width: 30px
+    .head
+      background: rgba( 255,255,255,.3 )
+      padding: 5px 0
+      +box-sizing( border-box )
+      float: left
+    .body
+      .recall
+        z-index: 1
+        font-size: 14px
+        padding: 5px 0
+        width: 660px
+        float: left
+        cursor: pointer
+        &:nth-child( odd )
+          background: rgba( 255,255,255,.5 )
+        &:nth-child( even )
+          background: rgba( 255,255,255,.4 )
+        a.show
+          color: $color-white-100
+        > a
+          z-index: 0
+        .published, .delete, .vk-link
+          z-index: 2
+        .published
+          cursor: default
+        .delete
+          float: right
+        .delete a
+          cursor: pointer
+          display: block
+          .close-small
+            margin: 2px 0 0 10px
+        a.fancybox.subscriber-photo, a.fancybox.subscriber-photo > img
+          width: 100px
+          height: 100px
+        .text-showed
+          display: none
+          background: rgba( 255,255,255,.05 )
+          width: 660px
+          float: left
+          +box-sizing( border-box )
+          padding: 10px
+          margin-bottom: -5px
+
+  .pagination
+    margin-top: 25px

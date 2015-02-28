@@ -1,0 +1,385 @@
+@import base
+
+
+.play
+  +border-radius( 50% )
+  background: $bg-black-6
+  +box-sizing( border-box )
+  position: absolute
+  cursor: pointer
+  .triangle
+    width: 0
+    height: 0
+    border-style: solid
+    border-color: transparent transparent transparent $bg-white-8
+.video-small
+  cursor: pointer
+  width: 230px
+  height: 150px
+  position: relative
+  +box-sizing( border-box )
+  img
+    +box-sizing( border-box )
+    border: 1px solid $bg-white-6
+    width: 230px
+    height: 150px
+  .play
+    width: 50px
+    height: 50px
+    left: 90px
+    top: 50px
+    padding: 13px 0 0 18px
+    .triangle
+      border-width: 12px 0 12px 20px
+.vk
+  background-image: image-url("icons-main.png")
+  height: 21px
+  width: 21px
+  background-position: 0px 0px
+
+
+.welcome
+  .content
+    text-align: center
+    .description-main .title
+      margin-top: 40px
+    .video-main, .video-main > .main-embed-video, .video-main > .main-embed-video > iframe
+      width: 660px
+      height: 372px
+    .video-main
+      position: relative
+      +border-radius( $border-radius-7 )
+      border: 1px solid $color-white-6
+      overflow: hidden
+      img
+        cursor: pointer
+        +border-radius( $border-radius-7 )
+        +box-sizing( border-box )
+      .main-embed-video
+        position: absolute
+        top: 0
+        left: 0
+        overflow: hidden
+        +border-radius( $border-radius-7 )
+        iframe
+          +box-sizing( border-box )
+          border: none
+          +border-radius( $border-radius-7 )
+      .play
+        cursor: pointer
+        width: 72px
+        height: 72px
+        left: 295px
+        top: 125px
+        padding: 17px 0 0 25px
+        position: absolute
+        .triangle
+          border-width: 19px 0 19px 33px
+      .share
+        +box-sizing( border-box )
+        background: $bg-gray-75
+        position: absolute
+        bottom: 0px
+        width: 100%
+        height: 38px
+        color: $color-white-100
+        +border-bottom-right-radius( $border-radius-7 )
+        +border-bottom-left-radius( $border-radius-7 )
+        +transition( right 0.3s ease )
+        .share-with-vk
+          height: 21px
+          float: right
+          margin: 9px 16px 0 0
+          .plus, .title, .vk
+            float: left
+          .plus
+            background-image: image-url("icons-main.png")
+            margin-top: 3px
+            height: 14px
+            width: 14px
+            background-position: -3px 21px
+          .title
+            margin: 0 5px
+            font-size: 14px
+            line-height: 21px
+          a
+            color: #fff
+    .video-main.playing
+      &:hover
+        .share
+          right: 0px
+      .share
+        width: 155px
+        right: -155px
+        top: 42px
+        z-index: 5000
+        +border-radius( 0px )
+
+    .become-member
+      @extend %button
+      width: 380px
+      margin-top: 40px
+      a
+        font-size: 26px
+        line-height: 25px
+
+    .description
+      text-align: left
+      margin-top: 55px
+      ul
+        overflow: hidden
+        margin-top: 60px
+        font-size: 22px
+        line-height: 22px
+        li
+          margin-top: 15px
+          padding-left: 30px
+          &:first-child
+            margin-top: 0px
+      h1
+        margin: 20px 0
+
+    .disclaimer
+      margin: 40px 0
+      width: 100%
+      text-align: left
+      font-size: 22px
+      line-height: 24px
+
+  .sidebar
+    .video-recalls
+      .titleable
+        margin-bottom: 10px
+        font-size: 26px
+      .video
+        .date, .name
+          line-height: 28px
+        .date
+          color: $color-white-100
+        .name
+          font-size: 12px
+          color: $color-gray
+      .separator
+        width: 100%
+        height: 2px
+        background: $bg-white-6
+        margin: 10px 0
+      .see-other
+        text-align: right
+        margin-top: 10px
+        a
+          font-size: 14px
+    .our-group, .press-about-us
+      margin-top: 40px
+      float: left
+      .titleable
+        font-size: 26px
+        float: left
+    .our-group
+      .vk
+        margin-top: -5px
+    .press-about-us
+      .video
+        margin-top: 20px
+        .name
+          font-size: 14px
+          color: $color-white-100
+          margin-top: 5px
+          a
+            color: $color-yellow
+            display: inline-block
+    .subscrite-to-new-anonces
+      float: left
+      margin-top: 20px
+
+.welcome.landing
+  .hat
+    height: 220px
+    width: 660px
+    background-image: image-url("logo3.png")
+    background-position: 0px 0px
+  > h1
+    visibility: hidden
+  .sidebar
+    margin-top: -27px
+    .video-recalls
+      .titleable
+        font-size: 26px
+        margin-bottom: 10px
+  .input, .input-inner
+    color: #000
+    background: #fff
+    height: 56px
+    +box-sizing( border-box )
+    font-size: 24px
+    text-align: center
+    +box-shadow( inset 0px 2px 5px rgba( 40,40,40,.75 ) )
+    line-height: 46px
+  .input-inner
+    border: 0
+    width: 300px
+    margin-left: -15px
+    padding-top: 8px
+    text-align: center
+  .input
+    overflow: hidden
+    border: 1px solid rgba( 217,217,217,1 )
+    margin-bottom: 25px
+    +border-radius( 28px )
+    float: none
+    clear: both
+    outline: none
+    /* Place Holder CSS */
+    &:focus::-webkit-input-placeholder
+      opacity: 0
+    &::-webkit-input-placeholder
+      color: #000
+      opacity: 0.5
+      -webkit-transition: opacity 0.35s ease-in-out
+      transition: opacity 0.35s ease-in-out
+    &:-moz-placeholder
+      color: #000
+      opacity: 0.5
+      -moz-transition: opacity 0.35s ease-in-out
+      transition: opacity 0.35s ease-in-out
+    &::-moz-placeholder
+      color: #000
+      opacity: 0.5
+      -moz-transition: opacity 0.35s ease-in-out
+      transition: opacity 0.35s ease-in-out
+    &:-ms-input-placeholder
+      color: #000
+      opacity: 0.5
+      -ms-transition: opacity 0.35s ease-in-out
+      transition: opacity 0.35s ease-in-out
+
+  .video.video-main.playing
+    &:hover
+      iframe
+        .controls-wrapper
+          display: block
+    iframe
+      .controls-wrapper
+        display: none
+
+  .input.new
+    position: absolute
+    left: -5000px
+  .button
+    font-size: 16px
+    color: $color-yellow
+    @extend %button
+    padding: 10px 30px
+    +box-sizing( border-box )
+    margin-bottom: 25px
+    cursor: pointer
+  .input, .button, .of-select
+    margin-bottom: 20px
+    width: 270px
+  .input, .button, .of-select, .strong-emotions, .about-spam
+    margin-left: auto
+    margin-right: auto
+  .strong-emotions, .about-spam
+    font-size: 14px
+  .strong-emotions
+    color: $color-yellow
+    margin-top: 15px
+  .about-spam
+    margin-top: 40px
+    width: 350px
+  select
+    background: transparent
+    border: 0
+    -webkit-appearance: none
+  form
+    position: relative
+
+
+  #search-result-fake
+    +box-sizing(border-box)
+    padding-left: 5px
+    width: 100%
+    font-size: 90%
+    outline: none
+    +border-radius(28px)
+    border-radius: 15px
+    height: 100%
+
+  .of-select
+    position: relative
+    margin-bottom: 0
+
+  #search-result-fake-div
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    top: 0
+    cursor: pointer
+
+  #search-result-present-list
+    display: none
+    +border-radius(28px)
+    position: absolute
+    text-align: left
+    overflow: auto
+    background-color: #fff
+    color: #000
+    border: 1px solid #000
+    height: 52px
+    line-height: 25px
+    font-size: 24px
+    z-index: 4
+    top: 66px
+    width: 100%
+  .search-result-list-item
+    cursor: pointer
+    &:hover
+      color: #fff
+      background: #000
+
+  .description-main
+    margin-top: 40px
+    .description
+      margin-top: 40px
+
+.welcome.pay
+  .content
+    text-align: left
+    h2.title
+      margin: 20px 0
+    ol
+      li
+        img
+          width: 50px
+        a
+          cursor: pointer
+  .our-group
+    margin-top: 0px
+  .pay-description
+    padding: 30px
+    z-index: 10000
+    +border-radius($border-radius-7)
+    border: 5px solid #fff
+    width: 800px
+    min-height: 400px
+    +box-sizing(border-box)
+    position: absolute
+    top: 150px
+    left: 50%
+    margin-left: -400px
+    background: #000
+    background-image: image-url("bg-fill.jpg")
+    float: left
+    .fancybox-item.fancybox-close
+      z-index: 10000
+    img
+      max-width: 675px
+      margin-top: 20px
+    h1
+      text-align: center
+    form
+      margin-top: 50px
+      input
+        text-align: center
+        margin-left: 100px

@@ -1,0 +1,33 @@
+%header
+  .hat
+    = link_to real_root_path do
+      .logo
+    .menu
+      .item{ class: controller_name == 'parties' && 'active' || '' }
+        = link_to all_parties_path do
+          Ближайшие
+          %br вечеринки
+      .separator
+      .item{ class: /recalls|albums/ =~ controller_name && 'active' || '' }
+        = link_to recalls_path do
+          Фото-видео
+          %br отчёты
+      .separator
+      .item{ class: controller_name == 'pages' && !(/edit|rules/ =~ action_name) && 'active' || '' }
+        = link_to structure_path do
+          Что тебя
+          %br ожидает
+      .separator
+      .item{ class: controller_name == 'articles' && 'active' || '' }
+        = link_to articles_path do
+          О зрительном
+          %br контакте
+      .separator
+      .item{ class: controller_name == 'pages' && !(/edit|rules/ =~ action_name) && 'active' || '' }
+        = link_to entities_path do
+          Статьи
+    - if admin_signed_in?
+      .sign-out
+        = link_to 'Выйти', destroy_admin_session_path, method: :delete
+        = link_to 'Заявки', all_requests_path
+        = link_to 'Страница информации', info_page_path

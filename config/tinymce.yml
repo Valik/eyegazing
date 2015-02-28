@@ -1,0 +1,17 @@
+fontsize_formats: '12px 13px 14px 16px 18px 20px 22px 24px 26px'
+content_css : '/stylesheets/content.min.css'
+language: 'ru'
+menubar: false
+plugins: 'link lists image uploadimage table textcolor colorpicker'
+image_advtab: true
+uploadimage_form_url : '/photos'
+target_list: [
+  {title: 'Нет', value: ''},
+  {title: 'В этой вкладке', value: '_self'},
+  {title: 'В новом окне', value: '_blank'}
+]
+toolbar: "undo redo | styleselect | bold italic | link unlink | alignleft aligncenter alignright alignjustify | sizeselect | fontsizeselect | bullist numlist | image uploadimage | table | forecolor backcolor"
+theme_advanced_resizing : true
+theme_advanced_resizing_min_height: 450
+height: 450
+body_id : "mce-editor"

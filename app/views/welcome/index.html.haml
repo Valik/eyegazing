@@ -1,0 +1,57 @@
+- js 'http://vk.com/js/api/share.js?90'
+
+.welcome
+  .content
+    .video.video-main
+      - unless @main_video.nil?
+        = image_tag @main_video.photo.photo_url(:site, :main), alt: 'Свидания без Слов'
+      .play
+        .triangle
+      - unless @main_video.nil?
+        .video{ data: { link: @main_video.link } }
+      .share
+        .share-with-vk
+          .plus
+          = link_to "https://vk.com/share.php?url=#{u(request.original_url)}&title=#{URI.encode('Свидания без слов в Питере')}&image=#{request.protocol + request.host_with_port + '/photos/share_avatar.jpg'}&noparse=true", { onclick: "javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" } do
+            .title Поделиться...
+            .vk
+    .become-member= link_to 'Записаться на ближайшую вечеринку', all_parties_path
+    = render 'layouts/page_description'
+
+  .sidebar
+    .video-recalls
+      .titleable= @page.sidebar_title
+
+      - @videos.each_with_index do |video, i|
+        .video
+          .date= video.name
+          .video-small
+            = image_tag video.photo.photo_url(:site, :sidebar), alt: ''
+            .play
+              .triangle
+            .video{ data: { link: video.link } }
+          .name
+            = video.created_at.strftime("%d")
+            = t( 'date.month_names' )[video.created_at.strftime("%m").to_i]
+            = video.created_at.strftime("%y")
+          - unless @videos.length - 1 == i
+            .separator
+      .see-other= link_to 'Смотреть другие отзывы', albums_video_path
+    .our-group
+      = link_to 'http://vk.com/eyegazing' do
+        .titleable Наша группа
+        .vk
+    .press-about-us
+      .titleable Пресса о нас
+      .video
+        .video-small
+          = image_tag 'piter_fm_interview_sidebar.jpg'
+          .play
+            .triangle
+          .video{ data: { link: "<iframe src='//player.vimeo.com/video/102757332?autoplay=1' width='400' height='250' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"} }
+        .name
+          Канал
+          = link_to 'Piter.tv', 'http://piter.tv/event/svidanie/'
+          взял у нас
+          = link_to 'интервью', 'http://piter.tv/event/svidanie/'
+    .subscrite-to-new-anonces= link_to 'Подписаться на анонсы новых вечеринок', root_path, target: '_blank'

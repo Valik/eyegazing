@@ -1,0 +1,13 @@
+- provide :meta_description, @page.meta_description
+
+.description-main
+  %h1.title= @page.title
+  .description
+    = @page.content.html_safe unless @page.content.nil?
+    .ps
+      %p
+        %span.left
+        %i
+          = @page.ps.html_safe unless @page.ps.nil?
+- if admin_signed_in?
+  .admin-links= link_to 'Редактировать описание', [:edit, @page]

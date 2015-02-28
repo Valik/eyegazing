@@ -1,0 +1,38 @@
+- provide :title, 'Модерация отзывов'
+
+.recalls.recalls-moderation
+  .content
+    .description-main
+      %h1.title Модерация отзывов
+    .recalls-list
+      .head
+        .num #
+        .name Имя
+        .email E-mail
+        .date Дата
+        .published Опубликовано
+        .delete
+      .body
+        - @recalls.each_with_index do |r,i|
+          .recall
+            = link_to recall_path( r.id ), remote: true, data: { type: 'json' }, class: 'show' do
+              .num= i + 1
+              .name= r.name
+              .email= r.email
+            .date{ data: { id: r.id } }
+              = r.published_at.present? && r.published_at.strftime( "%d.%m.%y" ) || 'Новый'
+            .published
+              = check_box_tag :published, 'true', r.published
+              = hidden_field_tag :recall_id, r.id
+            .delete
+              = link_to recall_path( r.id ), remote: true, method: :delete, data: { type: 'json', confirm: 'Ты точно хочешь удалить этот отзыв?' }, class: 'delete' do
+                .close-small
+                  .x
+                  .y
+        .admin-links
+          Всего отзывов:
+          = @recalls.count
+    .clear
+    .admin-links= link_to 'Вернуться на страницу отзывов', recalls_path
+
+  = render 'layouts/sidebar_only_group'

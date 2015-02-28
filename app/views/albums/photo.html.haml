@@ -1,0 +1,36 @@
+- provide :title, 'Фотоотчёты с прошедших Свиданий без Слов'
+- js 'albums'
+
+.albums
+  .content
+    .photos
+      %h1.title Фотоотчёты с прошедших Свиданий без Слов
+      - @photos.in_groups_of(4,false) do |photos_row|
+        .photos-row
+          - photos_row.each do |p|
+            .video-container.photo-container{ class: "photo-#{p.id}" }
+              .photo
+                .photo-inner-container
+                  %a.fancybox{ rel: 'gallery1', href: p.photo_url(:site) }
+                    = image_tag p.photo_url(:site, :thumb), alt: ''
+              -# .date
+              -#   От
+              -#   .created_at= p.created_at.strftime("%d.%m.%y")
+              .title= p.name
+              - if admin_signed_in?
+                %a.photo-update{ data: { id: p.id, name: p.name }} Редактировать
+                = link_to 'Удалить', photo_path(p), method: :delete, remote: true, data: { type: 'json' }, class: 'delete'
+    .see-other
+      = link_to 'http://vk.com/albums-61365408' do
+        Смотреть остальные фото
+        .vk
+    = will_paginate @photos
+    - if admin_signed_in?
+      .admin-links
+        .add
+          = label_tag 'Добавление фото', nil, class: 'name'
+          = form_for :photo_form, url: '/photos', html: { id: 'upload_form', multipart: true}, data: { type: 'json' }, remote: true, method: :post do |p|
+            = p.file_field :file, multiple: true, label: 'Выбрать', name: 'photo_form[file][]'
+            .replacer Загрузить фото
+          %p Размер загружаемого фото не должен превышать 1920x1920 px.
+  = render 'layouts/sidebar_only_group'

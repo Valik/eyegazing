@@ -1,0 +1,52 @@
+@import base
+
+footer
+  // margin-top: -340px
+  clear: both
+  position:       absolute
+  width:         100%
+  min-width:     $width-main
+  +box-sizing(border-box)
+
+  .foot
+    margin:     0 auto
+    min-width:  $width-main
+    width:      $width-main
+    +box-sizing(border-box)
+
+footer
+  z-index: -1
+  margin-top: -850px
+  .foot
+    z-index: -1
+    position: relative
+    width: image-width( "bg-footer.jpg" )
+    height: 850px
+    .bg
+      z-index: -999
+      position: absolute
+      background-image: image-url("bg-footer.jpg")
+      width: image-width( "bg-footer.jpg" )
+      background-position: 0px 0px
+      height: 850px
+    .info
+      border-top: 1px solid rgba( 255,255,255, .6 )
+      padding: 29px 10px 0 10px
+      position: absolute
+      bottom: 0
+      height: 60px
+      color: $color-white-100
+      line-height: 14px
+      font-size: 14px
+      width: 100%
+      a
+        display: inline-block
+        color: $color-yellow
+        text-decoration: underline
+      .copyright-email
+        .copyright
+          float: left
+        .email
+          float: right
+      .money-back
+        margin-top: 10px

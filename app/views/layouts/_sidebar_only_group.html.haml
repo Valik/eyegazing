@@ -1,0 +1,9 @@
+.sidebar
+  .our-group
+    = link_to 'http://vk.com/eyegazing' do
+      .name.titleable Наша группа
+      .vk
+  - if controller_name != 'parties' && controller_name != 'payments'
+    .button= link_to 'Участвовать в Свиданиях без Слов', all_parties_path
+  - if action_name != 'landing'
+    .subscrite-to-new-anonces= link_to 'Подписаться на анонсы новых вечеринок', root_path, target: '_blank'
